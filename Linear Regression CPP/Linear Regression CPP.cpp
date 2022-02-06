@@ -6,6 +6,7 @@
 */
 
 #include "LinearRegression.h"
+#include "LinearRegressionGD.h"
 
 int main()
 {
@@ -35,9 +36,9 @@ int main()
 		new double[2] {6.3, 6.3}
 	};
 
-	LinearRegression model;
+	LinearRegressionGD model(0.0001);
 
-	double rmse_score = model.Fit(train, 9, test, 9);
+	double rmse_score = model.Fit(train, 9, test, 9, 1000);
 
 	delete[] train;
 	delete[] test;
