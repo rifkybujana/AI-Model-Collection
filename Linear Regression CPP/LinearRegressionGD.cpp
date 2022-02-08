@@ -42,7 +42,7 @@ double LinearRegressionGD::Fit(
     size_t epochs
 )
 {
-    size_t size_train = train.size(), test_size = test.size();
+    size_t size_train = train.size(), size_test = test.size();
 
     double* x_train = new double[size_train];
     double* y_train = new double[size_train];
