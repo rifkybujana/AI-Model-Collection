@@ -36,8 +36,14 @@ LinearRegressionGD::~LinearRegressionGD()
 {
 }
 
-double LinearRegressionGD::Fit(double** train, size_t size_train, double** test, size_t size_test, size_t epochs)
+double LinearRegressionGD::Fit(
+    std::vector <std::vector <double>> train,
+    std::vector <std::vector <double>> test,
+    size_t epochs
+)
 {
+    size_t size_train = train.size(), test_size = test.size();
+
     double* x_train = new double[size_train];
     double* y_train = new double[size_train];
     for (size_t i = 0; i < size_train; i++)
@@ -70,11 +76,11 @@ double LinearRegressionGD::Fit(double** train, size_t size_train, double** test,
 
     double error = Eval(x_test, y_test, size_test);
 
-    std::cout << "MSE SCORE: " << error 
+    std::cout << "MSE SCORE: "  << error 
               << "\tGradient: " << weight 
-              << "\tBias: " << bias 
-              << "\tLR: " << learning_rate 
-              << "\tEpochs: " << epochs 
+              << "\tBias: "     << bias 
+              << "\tLR: "       << learning_rate 
+              << "\tEpochs: "   << epochs 
               << std::endl;
 
     std::cout << "x\ty\tprediction" << std::endl;

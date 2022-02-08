@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <vector>
 
 class LinearRegression
 {
@@ -14,13 +15,16 @@ private:
 	double covariance(double* x, double mean_x, double* y, double mean_y, size_t size);
 	double rmse(double* actual, double* predicted, size_t size);
 
-	void GetCoefficient(double** data, size_t size);
+	void GetCoefficient(std::vector <std::vector <double>> data);
 
 public:
 	LinearRegression();
 	~LinearRegression();
 
-	double Fit(double** train, size_t size_train, double** test, size_t size_test);
+	double Fit(
+		std::vector <std::vector <double>> train,
+		std::vector <std::vector <double>> test
+	);
 	double Predict(double x);
 };
 

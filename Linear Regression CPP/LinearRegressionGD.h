@@ -1,8 +1,8 @@
 #pragma once
 
+#include <vector>
 #include <cmath>
 #include <iostream>
-#include <stdio.h>
 
 class LinearRegressionGD
 {
@@ -18,7 +18,11 @@ public:
 	LinearRegressionGD(double learning_rate = 0.01);
 	~LinearRegressionGD();
 
-	double Fit(double** train, size_t size_train, double** test, size_t size_test, size_t epochs);
+	double Fit(
+		std::vector <std::vector <double>> train, 
+		std::vector <std::vector <double>> test, 
+		size_t epochs
+	);
 	double Eval(double* x, double* y, size_t size);
 
 	double Predict(double x);

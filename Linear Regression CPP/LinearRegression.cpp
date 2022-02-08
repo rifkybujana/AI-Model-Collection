@@ -37,8 +37,10 @@ double LinearRegression::rmse(double* actual, double* predicted, size_t size)
 	return std::sqrt(mean_error);
 }
 
-void LinearRegression::GetCoefficient(double** data, size_t size)
+void LinearRegression::GetCoefficient(std::vector <std::vector <double>> data)
 {
+	size_t size = data.size();
+
 	double* x = new double[size];
 	double* y = new double[size];
 
@@ -63,14 +65,19 @@ LinearRegression::~LinearRegression()
 {
 }
 
-double LinearRegression::Fit(double** train, size_t size_train, double** test, size_t size_test)
+double LinearRegression::Fit(
+	std::vector <std::vector <double>> train,
+	std::vector <std::vector <double>> test
+)
 {
+	size_t size_train = train.size(), size_test = test.size();
+
 	double* predictions = new double[size_test];
 
 	double* x = new double[size_test];
 	double* y = new double[size_test];
 
-	GetCoefficient(train, size_train);
+	GetCoefficient(train);
 
 	for (size_t i = 0; i < size_test; i++)
 	{
